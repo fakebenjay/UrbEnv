@@ -89,8 +89,6 @@
               }
             }
 
-            // console.log(distID)
-
             map.addLayer({
               'id': distID,
               'type': 'fill',
@@ -115,10 +113,38 @@
         })
       }
 
+      function adjustMap() {
+        var councilDistURL = "data/Community_Districts.geojson"
+
+        d3.json(councilDistURL, function(err, geojson) {
+          geojson.features.forEach(function(f) {
+            var yearSelect = document.querySelector('#year').value
+            var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+            var categorySelect = document.querySelector('#category').value
+            var complaintSelect = document.querySelector('#complaint').value
+            var distID = cdRefine(f.properties.boro_cd)
+
+            var colorScale = d3.scaleQuantize()
+              .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
+              .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
+
+            var color = function(masterData) {
+              if (!masterData[distID]) {
+                return "#444444"
+              } else {
+                return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
+              }
+            }
+            map.setPaintProperty(distID, 'fill-color', color(masterData));
+          })
+        })
+      }
+
       document.querySelector('div.selectbox').addEventListener('change', (e) => {
         populateComplaint(e.target)
-        renderMap()
+        adjustMap()
       });
+
       map.on('load', renderMap)
     </script>
   </body>
