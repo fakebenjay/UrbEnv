@@ -14,7 +14,10 @@ function populateComplaint(target) {
 	if (target.id === 'category') {
 		var selected = target.value
 		var keys = Object.keys(masterData['0-Unspecified']['all_years'][selected]).filter(k => k !== "Total") //Specific year and CD are irrelevant here
-		keys.unshift("Total")
+
+		if (selected !== 'vehicles') {
+			keys.unshift("Total")
+		}
 
 		var complaintDropdown = document.querySelector('#complaint')
 

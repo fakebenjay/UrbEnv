@@ -137,10 +137,13 @@
         <br></br>
         <div class="table-container mid-half avenir lh-solid f6-l f7-m f8">
           <h1>View every air quality-related 311 complaint from 2010 to 2018</h1>
+          <em>(Calls listed under "vehicles" category are the sum of "Air: Smoke, Vehicular (AA4)" and "Air: Odor/Fumes, Vehicle Idling (AD3)". Both can be viewed individually under their respective categories)</em>
+          <br></br>
           <div id='map' style='width: 800px; height: 600px;'>
             <div id='state-legend' class='legend' style='max-width: 30%; min-width: 30%;'>
               <div class="selectbox">
                 <select name="category" id="category">
+                  <option value="vehicles">Vehicles</option>
                   <option value="total">All</option>
                   <option value="dust">Dust</option>
                   <option value="odor">Odor</option>
@@ -241,9 +244,14 @@
                     // Change the cursor style as a UI indicator.
                     map.getCanvas().style.cursor = 'pointer';
 
+                    var yearSelect = document.querySelector('#year').value
+                    var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+                    var categorySelect = document.querySelector('#category').value
+                    var complaintSelect = document.querySelector('#complaint').value
+
                     //var coordinates = e.features[0].geometry.coordinates.slice()[0][0][0];
                     var coordinates = [e.lngLat.lng, e.lngLat.lat];
-                    var description = e.features[0].properties.description;
+                    var description = `<strong>${distID}</strong><br><p>${masterData[distID][yearSelect][categorySelect][complaintSelect]} complaint(s)</p>`;
 
                     // Ensure that if the map is zoomed out such that multiple
                     // copies of the feature are visible, the popup appears
@@ -301,7 +309,7 @@
 
             map.on('load', renderMap)
           </script>
-          <small>Source: NYC Open Data</em></small>
+          <small>Source: <a href="https://nycopendata.socrata.com/Social-Services/311-Service-Requests-from-2010-to-Present/erm2-nwe9">NYC OpenData</a></em></small>
         </div>
       </div>
     </div>
