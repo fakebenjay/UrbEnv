@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="buddy-methods.js"></script>
+    <script src="data.js"></script>
+    <script src="domains.js"></script>
+    <title>NYC</title>
+    <style type='text/css'>
+      .mapboxgl-popup-content {
+        max-width: 100%;
+        z-index: 2;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id='map' style='width: 800px; height: 600px;'>
+      <div id='state-legend' class='legend' style='max-width: 30%; min-width: 30%;'>
+        <div class="selectbox">
+          <select name="category" id="category">
+            <option value="total">All</option>
+            <option value="dust">Dust</option>
+            <option value="odor">Odor</option>
+            <option value="odor_fumes">Odor/Fumes</option>
+            <option value="open_fire">Open Fire</option>
+            <option value="smoke">Smoke</option>
+            <option value="soot">Soot</option>
+            <option value="ventilation">Ventilation</option>
+            <option value="other">Other</option>
+          </select>
+          <br>
+          <select name="complaint" id="complaint">
+          </select>
+          <br>
+          <select name="year" id="year">
+            <option value="all_years">All Years</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoiZmFrZWJlbmpheSIsImEiOiJjanphNGRhdngwMGZjM29vOTFpYXE2ZmwwIn0.4ASXT8J0qYEC4Kso_5Wp_g';
+
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v10',
+        center: [-73.935242, 40.730610],
+        zoom: 9.3
+      });
+
+      map.addControl(new mapboxgl.NavigationControl())
+      populateComplaint(document.querySelector('#category'))
+
+      function renderMap() {
+        var councilDistURL = "data/Community_Districts.geojson"
+
+        d3.json(councilDistURL, function(err, geojson) {
+          geojson.features.forEach(function(f) {
+            var yearSelect = document.querySelector('#year').value
+            var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+            var categorySelect = document.querySelector('#category').value
+            var complaintSelect = document.querySelector('#complaint').value
+            var distID = cdRefine(f.properties.boro_cd)
+
+            var colorScale = d3.scaleQuantize()
+              .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
+              .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
+
+            var color = function(masterData) {
+              if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
+                return "#444444"
+              } else {
+                return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
+              }
+            }
+
+            console.log(distID)
+
+            map.addLayer({
+              'id': distID,
+              'type': 'fill',
+              'source': {
+                'type': 'geojson',
+                'data': {
+                  'type': 'Feature',
+                  "properties": {
+                    "description": `<strong>${distID}</strong><br><p>${masterData[distID][yearSelect][categorySelect][complaintSelect]} complaint(s)</p>`
+                  },
+                  'geometry': {
+                    'type': 'MultiPolygon',
+                    'coordinates': f.geometry.coordinates
+                  }
+                }
+              },
+              'layout': {},
+              'paint': {
+                'fill-color': color(masterData),
+                'fill-opacity': 0.8,
+                'fill-outline-color': '#000000'
+              }
+            });
+
+            var popup = new mapboxgl.Popup({
+              closeButton: false,
+              closeOnClick: false
+            });
+
+            map.on('mouseenter', distID, function(e) {
+              // Change the cursor style as a UI indicator.
+              map.getCanvas().style.cursor = 'pointer';
+
+              //var coordinates = e.features[0].geometry.coordinates.slice()[0][0][0];
+              var coordinates = [e.lngLat.lng, e.lngLat.lat];
+              var description = e.features[0].properties.description;
+
+              // Ensure that if the map is zoomed out such that multiple
+              // copies of the feature are visible, the popup appears
+              // over the copy being pointed to.
+              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+              }
+
+              // Populate the popup and set its coordinates
+              // based on the feature found.
+              popup.setLngLat(coordinates)
+                .setHTML(description)
+                .addTo(map);
+            });
+
+            map.on('mouseleave', distID, function() {
+              map.getCanvas().style.cursor = '';
+              popup.remove();
+            });
+          })
+        })
+      }
+
+      function adjustMap() {
+        var councilDistURL = "data/Community_Districts.geojson"
+
+        d3.json(councilDistURL, function(err, geojson) {
+          geojson.features.forEach(function(f) {
+            var yearSelect = document.querySelector('#year').value
+            var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+            var categorySelect = document.querySelector('#category').value
+            var complaintSelect = document.querySelector('#complaint').value
+            var distID = cdRefine(f.properties.boro_cd)
+
+            var colorScale = d3.scaleQuantize()
+              .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
+              .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
+
+            var color = function(masterData) {
+              if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
+                return "#444444"
+              } else {
+                return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
+              }
+            }
+            map.setPaintProperty(distID, 'fill-color', color(masterData));
+          })
+        })
+      }
+
+      document.querySelector('div.selectbox').addEventListener('change', (e) => {
+        populateComplaint(e.target)
+        adjustMap()
+      });
+
+      map.on('load', renderMap)
+    </script>
+  </body>
+
+</html>

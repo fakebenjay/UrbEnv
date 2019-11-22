@@ -10,180 +10,301 @@
     <script src="buddy-methods.js"></script>
     <script src="data.js"></script>
     <script src="domains.js"></script>
-    <title>NYC</title>
+    <title>Even as city air quality improves, auto pollution remains high</title>
     <style type='text/css'>
       .mapboxgl-popup-content {
-        max-width: 50%;
+        max-width: 100%;
         z-index: 2;
       }
     </style>
+    <title>Even as city air quality improves, auto pollution remains high</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
   </head>
 
   <body>
-    <div id='map' style='width: 800px; height: 600px;'>
-      <div id='state-legend' class='legend' style='max-width: 30%; min-width: 30%;'>
-        <div class="selectbox">
-          <select name="category" id="category">
-            <option value="total">All</option>
-            <option value="dust">Dust</option>
-            <option value="odor">Odor</option>
-            <option value="odor_fumes">Odor/Fumes</option>
-            <option value="open_fire">Open Fire</option>
-            <option value="smoke">Smoke</option>
-            <option value="soot">Soot</option>
-            <option value="ventilation">Ventilation</option>
-            <option value="other">Other</option>
-          </select>
-          <br>
-          <select name="complaint" id="complaint">
-          </select>
-          <br>
-          <select name="year" id="year">
-            <option value="all_years">All Years</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-          </select>
+    <div class="container w-100">
+      <div class="headline avenir v-mid br bl bw3">
+        <h1 class='tc f1 f-headline-ns lh-solid'>Even as city air quality improves, auto pollution remains high</h1>
+        <h2 class='tc'><em>by Ben Jay</em></h2>
+      </div>
+      <div class="article-body f5 f5-ns lh-copy georgia pl6-l pr6-l pr3 pl3">
+        <p>
+          <span><span class='firstcharacter'>I</span>n April 2019, the New York City Department of Health and Mental Hygiene (DOHMH) released a <a href="https://nyc-ehs.net/besp-report/web/nyccas">report</a> detailing the results of its ongoing
+            Community Air Survey (NYCCAS). Since 2008, DOHMH has been measuring levels of various air pollutants through “samplers” mounted to lampposts in dozens of locations around the five boroughs, in order to track changes in air quality and
+            provide data for the city’s OneNYC sustainability plan.
+        </p>
+        <p>
+          The NYCCAS report includes an interactive map showing the levels of various pollutants – black carbon, nitric oxide, nitrogen dioxide, ozone, particulate matter, and sulfur dioxide – from 2009 to 2017. Most of the maps show a city with air
+          that is slowly, but steadily getting cleaner. On the map for nitric oxide, Manhattan goes from entirely red to mostly yellow and orange in the space of eight years. But the most interesting aspect of the map is where the red refuses to
+          budge.
+        </p>
+        <p>
+          Much of midtown remains just as red as it was at the start of the survey, while a thin red line from the Harlem River to the George Washington Bridge, right along the Trans-Manhattan Expressway, slices Washington Heights in half. A small
+          red spot in downtown Brooklyn marks the space between the Brooklyn and Manhattan Bridges, while another one right next to it marks the foot of the Williamsburg Bridge. From that blotch, a consistent red line stretches east along the Long
+          Island Expressway into Nassau County, while a patchier one extends south and west along the Brooklyn-Queens Expressway, eventually bisecting Staten Island until it ends at the foot of the Goethals Bridge. A similar U-shaped line defines the
+          Bronx along the Cross Bronx Expressway, I-95, and the Major Deegan Expressway.
+        </p>
+        <p>
+          Nitric oxide and nitrogen dioxide are the two pollutants featured in the NYCCAS report that are most commonly associated with auto exhaust – both are byproducts of burning fuel. During the study’s eight-year duration, nitrogen dioxide
+          levels citywide decreased by 26 percent, according to a DOHMH spokesperson. While that number is not insignificant, it’s a substantially lesser drop than for other pollutants. While the interactive map shows a city that turns from deep red
+          to yellow when the colors represent particulate matter, except on some highways, the map for nitrogen dioxide never goes any further than orange.
+        </p>
+        <aside class="pquote fl-ns avenir">
+          <blockquote>
+            <p>&ldquo;Nitrogen dioxide levels decreased by <strong>26 percent</strong> citywide. While that number is not insignificant, it’s a substantially lesser drop than for other pollutants.&rdquo;</p>
+          </blockquote>
+        </aside>
+        <p>
+          The samplers are designed to measure ambient pollutant levels, which does not enable them to determine on their own the exact sources of specific pollutants, according to Sarah Johnson, executive director of the air quality program at
+          DOHMH. However, the raw data collected is run against statistical models from other sources, including the EPA, which track pollution and various social trends. This allows DOHMH to attribute pollutants to specific sources, even if it can’t
+          give a hard percent value to which ones have contributed the most.
+        </p>
+        <p>
+          Around the same time period, from 2010 to 2018, car-related air quality complaints to the city’s 311 system – New York’s primary non-emergency public services and complaints line – have increased 58 percent. This is despite the fact that
+          overall air quality complaints have remained largely stagnant since 2010, the earliest year for which 311 call data is publicly available. This trend has been especially stark since 2014. Until that year, car-related complaints citywide
+          totaled around 2,000 annually, until a drastic spike led to 3,885 complaints being made in 2016, before leveling off around 3,000 complaints in 2017 and 2018.
+        </p>
+        <p>
+          Manhattan Community District 12, which includes Washington Heights and the stretch of highway that connects the Cross Bronx with the George Washington Bridge, has seen complaints increase by 270% since 2014, the biggest spike in the city.
+          Bronx CD 5, which is bordered on the south by the highway that connects to Manhattan CD 12, has seen complaints increase by 150%. Brooklyn CD 1, which is home to the Williamsburg Bridge, the Kosciuszko Bridge, and a heavily-trafficked
+          stretch of the Brooklyn-Queens Expressway, has seen the most complaints overall since 2010. Complaints there doubled between 2013 and 2015, before levelling off after that.
+        </p>
+        <br></br>
+        <div class="fl w-50-l w-100 mid-half avenir lh-solid left-box">
+          <h2 class='f3'>Citywide NO2 levels, 2009 to 2017</h2>
+          <img class='nyccas-map' id='pm25' src="pics/no2.jpg" />
+          <p style='margin-right: 5%; margin-left: 5%;'>
+            <small>Source: NYCCAS</em></small>
+          </p>
+        </div>
+        <div class="fl w-50-l w-100 mid-half avenir lh-solid right-box">
+          <h2 class='f3'>Citywide PM2.5 levels, 2009 to 2017</h2>
+          <img class='nyccas-map' id='pm25' src="pics/pm25.jpg" />
+          <p style='margin-right: 5%; margin-left: 5%;'>
+            <small>Source: NYCCAS</em></small>
+          </p>
+        </div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <p>
+          Mayor Bill de Blasio has made energy efficiency in buildings a priority of his administration. In 2014, he set aside <a
+            href="https://www.nytimes.com/2014/09/21/nyregion/new-york-city-plans-major-energy-efficiency-improvements-in-its-buildings.html">$1 billion in capital funds to retrofit city-owned buildings</a>, and in 2017, he announced plans to <a
+            href="https://www.architecturaldigest.com/story/mayor-de-blasio-has-a-big-plan-for-cutting-emissions-from-new-yorks-buildings">force large buildings reduce their carbon footprints by 40 percent by 2030</a>, or else face hefty fines. He
+          would eventually sign the large building regulations <a href="https://www.greentechmedia.com/articles/read/new-york-city-set-to-pass-ambitious-building-energy-efficiency-bill">into law in 2019</a>. Those regulations have been effective in
+          reducing sulfur dioxide and particulate matter.
+        </p>
+        <p>
+          However, no similar policy moves have been made with regard to vehicle traffic. Congestion pricing, which is governed by the state and was mandated in the 2019 state budget, will only cover part of Manhattan, and won’t go into effect until
+          2021 at the earliest. While the city has <a href="https://www.government-fleet.com/332241/new-york-city-doubles-ev-fleet-goal-to-4k">replaced over 2,000 gas-powered cars in the city fleet with electric models</a> under de Blasio’s watch,
+          he’s also allowed the fleet to grow by <a href="https://www.nydailynews.com/news/politics/ny-pol-deblasio-city-car-fleet-20190328-puz5on7t5zgojbw4qsiirmf3aq-story.html">5,000 cars overall</a> during his tenure. Additionally, very little has
+          been done during that time to reduce the number of privately-owned vehicles in the city.
+        </p>
+        <aside class="pquote fr-ns avenir">
+          <blockquote>
+            <p>&ldquo;We don’t have to necessarily see it in the data to know it’s not a good thing.&rdquo;</p>
+          </blockquote>
+        </aside>
+        <p>
+          Uber and Lyft, which launched in New York in 2011 and 2014, respectively, really began to <a href="https://toddwschneider.com/dashboards/nyc-taxi-ridehailing-uber-lyft-data/">take off in popularity around 2015</a>. Their rise has added more
+          private cars to the city’s streets, and with it, congestion and emissions. While ridesharing vehicles can’t entirely be blamed for current pollution levels, since they operate primarily in relatively central parts of Manhattan and western
+          Queens and Brooklyn, they haven’t been a positive addition to the city’s transit landscape either.
+        </p>
+        <p>
+          “We don’t have to necessarily see it in the data to know it’s not a good thing,” Johnson says.
+        </p>
+        <p>
+          The bigger risk, Johnson fears, is how pollution from larger vehicles, like trucks and delivery vehicles, will affect people in low income areas, like the South Bronx and upper Manhattan. Those areas, which are crossed by major highway
+          travelling north and west out of the city, have some of the city’s highest <a href="https://medium.com/asthma-in-the-south-bronx/asthma-by-the-numbers-73553b2c9621">asthma rates</a> and <a
+            href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Traffic/index.html">particulate pollution levels</a>.
+        </p>
+        <p>
+          Although most particulate matter, or PM2.5, is produced by heating fuel in buildings, <a href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Traffic/index.html">17% of particulate emissions come from traffic</a>. DOHMH estimates that <a
+            href="http://a816-dohbesp.nyc.gov/IndicatorPublic/Traffic/index.html">870 emergency room visits and hospitalizations, as well as 320 premature deaths</a>, can be attributed to PM2.5 from vehicle traffic, with about half of that coming
+          just from trucks and buses.
+        </p>
+        <p>
+          The future of auto pollution in New York remains to be seen, but there is some cause for hope. The <a href="https://onenyc.cityofnewyork.us/wp-content/uploads/2019/05/OneNYC-2050-Healthy-Lives.pdf">OneNYC 2050 plan</a> for sustainability,
+          released in May, does mention vague future plans.
+        </p>
+        <p>
+          “Over the next four years, New York City will expand initiatives to curtail vehicular emissions, working with the New York City Council to introduce legislation that will further restrict engine idling, particularly for vehicles with
+          secondary engines,” the report reads. “We will also launch an aggressive anti-idling outreach campaign targeted at stakeholders responsible for heavy-duty vehicles that produce the greatest emissions — such as school bus operators, and
+          truck delivery fleet owners — and focus on neighborhoods with the greatest air quality impacts.”
+        </p>
+        <br></br>
+        <div class="table-container mid-half avenir lh-solid f6-l f7-m f8">
+          <h1>View every air quality-related 311 complaint from 2010 to 2018</h1>
+          <div id='map' style='width: 800px; height: 600px;'>
+            <div id='state-legend' class='legend' style='max-width: 30%; min-width: 30%;'>
+              <div class="selectbox">
+                <select name="category" id="category">
+                  <option value="total">All</option>
+                  <option value="dust">Dust</option>
+                  <option value="odor">Odor</option>
+                  <option value="odor_fumes">Odor/Fumes</option>
+                  <option value="open_fire">Open Fire</option>
+                  <option value="smoke">Smoke</option>
+                  <option value="soot">Soot</option>
+                  <option value="ventilation">Ventilation</option>
+                  <option value="other">Other</option>
+                </select>
+                <br>
+                <select name="complaint" id="complaint">
+                </select>
+                <br>
+                <select name="year" id="year">
+                  <option value="all_years">All Years</option>
+                  <option value="2010">2010</option>
+                  <option value="2011">2011</option>
+                  <option value="2012">2012</option>
+                  <option value="2013">2013</option>
+                  <option value="2014">2014</option>
+                  <option value="2015">2015</option>
+                  <option value="2016">2016</option>
+                  <option value="2017">2017</option>
+                  <option value="2018">2018</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoiZmFrZWJlbmpheSIsImEiOiJjanphNGRhdngwMGZjM29vOTFpYXE2ZmwwIn0.4ASXT8J0qYEC4Kso_5Wp_g';
+
+            var map = new mapboxgl.Map({
+              container: 'map',
+              style: 'mapbox://styles/mapbox/streets-v10',
+              center: [-73.935242, 40.730610],
+              zoom: 9.3
+            });
+
+            map.addControl(new mapboxgl.NavigationControl())
+            populateComplaint(document.querySelector('#category'))
+
+            function renderMap() {
+              var councilDistURL = "data/Community_Districts.geojson"
+
+              d3.json(councilDistURL, function(err, geojson) {
+                geojson.features.forEach(function(f) {
+                  var yearSelect = document.querySelector('#year').value
+                  var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+                  var categorySelect = document.querySelector('#category').value
+                  var complaintSelect = document.querySelector('#complaint').value
+                  var distID = cdRefine(f.properties.boro_cd)
+
+                  var colorScale = d3.scaleQuantize()
+                    .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
+                    .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
+
+                  var color = function(masterData) {
+                    if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
+                      return "#444444"
+                    } else {
+                      return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
+                    }
+                  }
+
+                  console.log(distID)
+
+                  map.addLayer({
+                    'id': distID,
+                    'type': 'fill',
+                    'source': {
+                      'type': 'geojson',
+                      'data': {
+                        'type': 'Feature',
+                        "properties": {
+                          "description": `<strong>${distID}</strong><br><p>${masterData[distID][yearSelect][categorySelect][complaintSelect]} complaint(s)</p>`
+                        },
+                        'geometry': {
+                          'type': 'MultiPolygon',
+                          'coordinates': f.geometry.coordinates
+                        }
+                      }
+                    },
+                    'layout': {},
+                    'paint': {
+                      'fill-color': color(masterData),
+                      'fill-opacity': 0.8,
+                      'fill-outline-color': '#000000'
+                    }
+                  });
+
+                  var popup = new mapboxgl.Popup({
+                    closeButton: false,
+                    closeOnClick: false
+                  });
+
+                  map.on('mouseenter', distID, function(e) {
+                    // Change the cursor style as a UI indicator.
+                    map.getCanvas().style.cursor = 'pointer';
+
+                    //var coordinates = e.features[0].geometry.coordinates.slice()[0][0][0];
+                    var coordinates = [e.lngLat.lng, e.lngLat.lat];
+                    var description = e.features[0].properties.description;
+
+                    // Ensure that if the map is zoomed out such that multiple
+                    // copies of the feature are visible, the popup appears
+                    // over the copy being pointed to.
+                    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+                      coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+                    }
+
+                    // Populate the popup and set its coordinates
+                    // based on the feature found.
+                    popup.setLngLat(coordinates)
+                      .setHTML(description)
+                      .addTo(map);
+                  });
+
+                  map.on('mouseleave', distID, function() {
+                    map.getCanvas().style.cursor = '';
+                    popup.remove();
+                  });
+                })
+              })
+            }
+
+            function adjustMap() {
+              var councilDistURL = "data/Community_Districts.geojson"
+
+              d3.json(councilDistURL, function(err, geojson) {
+                geojson.features.forEach(function(f) {
+                  var yearSelect = document.querySelector('#year').value
+                  var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
+                  var categorySelect = document.querySelector('#category').value
+                  var complaintSelect = document.querySelector('#complaint').value
+                  var distID = cdRefine(f.properties.boro_cd)
+
+                  var colorScale = d3.scaleQuantize()
+                    .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
+                    .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
+
+                  var color = function(masterData) {
+                    if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
+                      return "#444444"
+                    } else {
+                      return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
+                    }
+                  }
+                  map.setPaintProperty(distID, 'fill-color', color(masterData));
+                })
+              })
+            }
+
+            document.querySelector('div.selectbox').addEventListener('change', (e) => {
+              populateComplaint(e.target)
+              adjustMap()
+            });
+
+            map.on('load', renderMap)
+          </script>
+          <small>Source: NYC Open Data</em></small>
         </div>
       </div>
     </div>
-    <script>
-      mapboxgl.accessToken = 'pk.eyJ1IjoiZmFrZWJlbmpheSIsImEiOiJjanphNGRhdngwMGZjM29vOTFpYXE2ZmwwIn0.4ASXT8J0qYEC4Kso_5Wp_g';
-
-      var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/streets-v10',
-        center: [-73.935242, 40.730610],
-        zoom: 9.3
-      });
-
-      map.addControl(new mapboxgl.NavigationControl())
-      populateComplaint(document.querySelector('#category'))
-
-      function renderMap() {
-        var councilDistURL = "data/Community_Districts.geojson"
-
-        d3.json(councilDistURL, function(err, geojson) {
-          geojson.features.forEach(function(f) {
-            var yearSelect = document.querySelector('#year').value
-            var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
-            var categorySelect = document.querySelector('#category').value
-            var complaintSelect = document.querySelector('#complaint').value
-            var distID = cdRefine(f.properties.boro_cd)
-
-            var colorScale = d3.scaleQuantize()
-              .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
-              .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
-
-            var color = function(masterData) {
-              if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
-                return "#444444"
-              } else {
-                return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
-              }
-            }
-
-            console.log(distID)
-
-            map.addLayer({
-              'id': distID,
-              'type': 'fill',
-              'source': {
-                'type': 'geojson',
-                'data': {
-                  'type': 'Feature',
-                  "properties": {
-                    "description": `<strong>${distID}</strong><br><p>${masterData[distID][yearSelect][categorySelect][complaintSelect]}</p>`
-                  },
-                  'geometry': {
-                    'type': 'MultiPolygon',
-                    'coordinates': f.geometry.coordinates
-                  }
-                }
-              },
-              'layout': {},
-              'paint': {
-                'fill-color': color(masterData),
-                'fill-opacity': 0.8,
-                'fill-outline-color': '#000000'
-              }
-            });
-
-            var popup = new mapboxgl.Popup({
-              closeButton: false,
-              closeOnClick: false
-            });
-
-            map.on('mouseenter', distID, function(e) {
-              // Change the cursor style as a UI indicator.
-              map.getCanvas().style.cursor = 'pointer';
-
-              //var coordinates = e.features[0].geometry.coordinates.slice()[0][0][0];
-              var coordinates = [e.lngLat.lng, e.lngLat.lat];
-              var description = e.features[0].properties.description;
-
-              // Ensure that if the map is zoomed out such that multiple
-              // copies of the feature are visible, the popup appears
-              // over the copy being pointed to.
-              while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-                coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-              }
-
-              // Populate the popup and set its coordinates
-              // based on the feature found.
-              popup.setLngLat(coordinates)
-                .setHTML(description)
-                .addTo(map);
-            });
-
-            map.on('mouseleave', distID, function() {
-              map.getCanvas().style.cursor = '';
-              popup.remove();
-            });
-          })
-        })
-      }
-
-      function adjustMap() {
-        var councilDistURL = "data/Community_Districts.geojson"
-
-        d3.json(councilDistURL, function(err, geojson) {
-          geojson.features.forEach(function(f) {
-            var yearSelect = document.querySelector('#year').value
-            var yearDomainSelect = (document.querySelector('#year').value === 'all_years') ? 'all_years' : 'individual_years'
-            var categorySelect = document.querySelector('#category').value
-            var complaintSelect = document.querySelector('#complaint').value
-            var distID = cdRefine(f.properties.boro_cd)
-
-            var colorScale = d3.scaleQuantize()
-              .range(['#63C246', '#8DFA56', '#D0FC5A', '#FFFE56', '#F3B641', '#E58849', '#E73225'])
-              .domain(domains[yearDomainSelect][categorySelect][complaintSelect]);
-
-            var color = function(masterData) {
-              if (distID === '26-BRONX' || distID === '28-BRONX' || distID === '84-QUEENS' || distID === '56-BROOKLYN') {
-                return "#444444"
-              } else {
-                return colorScale(masterData[distID][yearSelect][categorySelect][complaintSelect])
-              }
-            }
-            map.setPaintProperty(distID, 'fill-color', color(masterData));
-          })
-        })
-      }
-
-      document.querySelector('div.selectbox').addEventListener('change', (e) => {
-        populateComplaint(e.target)
-        adjustMap()
-      });
-
-      map.on('load', renderMap)
-    </script>
   </body>
 
 </html>
