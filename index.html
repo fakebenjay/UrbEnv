@@ -276,7 +276,7 @@
             }
 
             function adjustMap() {
-              var councilDistURL = "data/Community_Districts.geojson"
+              var councilDistURL = "Community_Districts.geojson"
 
               d3.json(councilDistURL, function(err, geojson) {
                 geojson.features.forEach(function(f) {
